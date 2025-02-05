@@ -11,3 +11,5 @@
 #include<functional>
 #include<mutex>
 #include<condition_variable>
+#include<future>
+#include<type_traits>

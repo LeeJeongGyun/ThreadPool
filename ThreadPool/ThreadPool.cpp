@@ -31,19 +31,6 @@ void ThreadPool::WorkerThread()
     }
 }
 
-void ThreadPool::EnqueueJob(std::function<void(void)> job)
-{
-    if (_allThreadExit)
-        return;
-
-    {
-        std::lock_guard<std::mutex> lockGuard(_jobMutex);
-        _jobs.push(job);
-    }
-
-    _jobCV.notify_one();
-}
-
 void ThreadPool::Exit()
 {
     if (_allThreadExit)
